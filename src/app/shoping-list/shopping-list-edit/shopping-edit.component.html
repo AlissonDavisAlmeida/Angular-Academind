@@ -1,0 +1,23 @@
+<div class="row">
+    <div class="col-xs-12">
+        <form>
+            <div class="row">
+                <div class="col-sm-5 form-group">
+                    <label for="name">Nome</label>
+                    <input type="text" id="name" class="form-control" #nomeInput>
+                </div>
+                <div class="col-sm-2 form-group">
+                    <label for="quantidade">Quantidade</label>
+                    <input type="number" class="form-control" #quantidadeInput>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <button class="btn btn-success botoes"  (click)="saveIngredient()">Salvar</button>
+                    <button class="btn btn-danger botoes" >Remover</button>
+                    <button class="btn btn-primary botoes" >Limpar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

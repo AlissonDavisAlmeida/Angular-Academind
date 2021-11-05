@@ -1,0 +1,35 @@
+
+<div class="principal">
+
+    <div class="row">
+        <div class="col-xs-12">
+            <img [src]="receita.imageUrl" class="img-responsive imagem" alt="">
+        </div>
+    </div>
+    <div class="conteudo">
+
+        <div class="row">
+            <div class="col-xs-12">
+                <h1>{{receita.nome}}</h1>
+            </div>
+        </div>
+        
+        
+        <div class="row">
+            <div class="col-xs-12">{{ receita.nome }}</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">{{ receita.descricao }}</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">Gerenciar Receita <span class="caret"></span></button>
+                    <ul class="dropdown-menu dropdown-menu-dark">
+                        <li><a href="#" class="dropdown-item">Adicionar Ingredientes</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>

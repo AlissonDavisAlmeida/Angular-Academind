@@ -1,0 +1,21 @@
+.principal{
+    display: flex;
+    flex-direction: row-reverse;
+    
+   
+    margin-top: 5%;
+}   
+    
+.imagem{
+    max-height: 300px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px black;
+}
+.conteudo{
+    margin-right: 10px;
+    display: flex;
+    
+    flex-direction: column;
+    text-align: right;
+    
+}

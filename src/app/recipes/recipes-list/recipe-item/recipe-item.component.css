@@ -1,0 +1,10 @@
+.itens{
+    display: flex;
+    margin-bottom: 10px;
+    justify-content: space-between;
+}
+.img-responsive{
+    border-radius: 10px;
+    width: 200px;
+    
+}

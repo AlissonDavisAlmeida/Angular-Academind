@@ -1,0 +1,13 @@
+.nova{
+    margin-top: 10px;
+}
+.itens{
+    margin: 10px;
+    background-color: rgba(144, 144, 252, 0.274);
+    border-radius: 8px;
+}
+.itens:hover{
+    background-color: rgba(0, 0, 255, 0.363);
+    transition: ease-in-out 0.5s;
+    color: white;
+}

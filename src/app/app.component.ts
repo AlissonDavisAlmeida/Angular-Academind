@@ -7,5 +7,10 @@ import { Component } from '@angular/core';
 })
 
 export class AppComponent {
-  title = 'AplicacaoPrincipal';
+  tagExibida : string;
+
+  exibirReceita(event) {
+    console.log('A tag mudou');
+    this.tagExibida = event;
+  }
 }
