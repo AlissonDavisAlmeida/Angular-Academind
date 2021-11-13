@@ -10,7 +10,6 @@ export class AppComponent {
   tagExibida : string;
 
   exibirReceita(event) {
-    console.log('A tag mudou');
     this.tagExibida = event;
   }
 }

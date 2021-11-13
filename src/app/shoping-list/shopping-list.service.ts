@@ -2,7 +2,7 @@ import { Ingredient } from '../shared/Ingredient.model';
 
 export class ShoppingListService {
   private ingredientes:Ingredient[] = [
-    new Ingredient('Pão', 10),
+
   ];
 
   constructor() { }
