@@ -1,6 +1,7 @@
 import {
-  Component, EventEmitter, OnInit, Output,
+  Component, OnInit,
 } from '@angular/core';
+import { ReceitasService } from '../receitas.service';
 import { Recipe } from '../recipe.model';
 
 @Component({
@@ -9,20 +10,11 @@ import { Recipe } from '../recipe.model';
   styleUrls: ['./recipes-list.component.css'],
 })
 export class RecipesListComponent implements OnInit {
-  receitas: Recipe[] = [
-    new Recipe('Pão', 'Farinha de Trigo', 'https://www.alegrafoods.com.br/wp-content/uploads/2021/06/02-receita-rapida-de-batata-recheada-com-bacon.jpg'),
-    new Recipe('Bolo', 'Ovos', 'https://www.alegrafoods.com.br/wp-content/uploads/2021/06/02-receita-rapida-de-batata-recheada-com-bacon.jpg'),
-  ];
+  receitas: Recipe[];
 
-  @Output() emiteReceita = new EventEmitter<Recipe>();
-
-  constructor() {}
+  constructor(private receitasService : ReceitasService) {}
 
   ngOnInit(): void {
-
-  }
-
-  exibeDetalhe(receita: Recipe) {
-    this.emiteReceita.emit(receita);
+    this.receitas = this.receitasService.getReceitas();
   }
 }

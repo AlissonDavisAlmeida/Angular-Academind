@@ -5,8 +5,8 @@
     <hr>
     <div class="row">
         <div class="col-xs-12">
-            <a href="#" class="list-group-item clearfix itens" (click)="exibeDetalhe(receita)" *ngFor="let receita of receitas">
-            <app-recipe-item [receita]="receita"></app-recipe-item>
+            <a href="#" class="list-group-item clearfix itens"  *ngFor="let receita of receitas">
+            <app-recipe-item  [receita]="receita"></app-recipe-item>
             </a>
         </div>
     </div>
