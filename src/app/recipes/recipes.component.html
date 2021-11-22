@@ -3,6 +3,7 @@
         <app-recipes-list ></app-recipes-list>
     </div>
     <div class="col-md-7 detalhes">
-        <app-recipes-details [receita]="receita" *ngIf="receita !== undefined"></app-recipes-details>
+        <!-- <app-recipes-details [receita]="receita" *ngIf="receita !== undefined"></app-recipes-details> -->
+        <router-outlet></router-outlet>
     </div>
 </div>

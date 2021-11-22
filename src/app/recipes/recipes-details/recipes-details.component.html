@@ -27,14 +27,14 @@
                <li *ngFor="let ingrediente of receita.ingredientes">{{ ingrediente.nome }}</li>
            </ul>
        </div>
-        <div class="row">
+        <div class="row itens-receita">
             <div class="col-xs-12">
                 <div class="btn-group">
                     <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">Gerenciar Receita <span class="caret"></span></button>
                     <ul class="dropdown-menu dropdown-menu-dark menu">
-                        <li><a href="#" class="dropdown-item">Adicionar Ingredientes</a></li>
+                        <li><a  class="dropdown-item">Adicionar Ingredientes</a></li>
                         <li><a  class="dropdown-item" (click)=" IrParaListadeCompras()">Ir para a lista de Compras</a></li>
-                        <li><a href="#" class="dropdown-item">Adicionar Ingredientes</a></li>
+                        <li><a  class="dropdown-item">Adicionar Ingredientes</a></li>
                     </ul>
                 </div>
             </div>

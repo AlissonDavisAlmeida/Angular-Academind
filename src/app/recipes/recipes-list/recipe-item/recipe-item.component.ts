@@ -12,10 +12,8 @@ export class RecipeItemComponent implements OnInit {
 
   @Input()receita : Recipe;
 
-  ngOnInit(): void {
-  }
+  @Input()indice : number;
 
-  onSelected() {
-    this.receitasService.receitaSelecionada.emit(this.receita);
+  ngOnInit(): void {
   }
 }
