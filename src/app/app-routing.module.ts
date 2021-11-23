@@ -1,21 +1,27 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { RecipesDetailsComponent } from './recipes/recipes-details/recipes-details.component';
+import { NgModule } from "@angular/core";
+import { RouterModule, Routes } from "@angular/router";
+import { RecipesDetailsComponent } from "./recipes/recipes-details/recipes-details.component";
+import { RecipesEditComponent } from "./recipes/recipes-edit/recipes-edit.component";
+import { RecipesStartComponent } from "./recipes/recipes-start/recipes-start.component";
 
-import { RecipesComponent } from './recipes/recipes.component';
-import { ShopingListComponent } from './shoping-list/shoping-list.component';
+import { RecipesComponent } from "./recipes/recipes.component";
+import { ShopingListComponent } from "./shoping-list/shoping-list.component";
 
 const routes: Routes = [
 
-  { path: '', redirectTo: '/receitas', pathMatch: 'full' },
+  { path: "", redirectTo: "/receitas", pathMatch: "full" },
   {
-    path: 'receitas',
+    path: "receitas",
     component: RecipesComponent,
     children: [
-      { path: 'receitas/detalhe/:indice', component: RecipesDetailsComponent },
+      { path: "", component: RecipesStartComponent },
+      { path: "nova", component: RecipesEditComponent },
+      { path: "detalhe/:indice", component: RecipesDetailsComponent },
+
+      { path: "editar/:id", component: RecipesEditComponent },
     ],
   },
-  { path: 'shopping', component: ShopingListComponent },
+  { path: "shopping", component: ShopingListComponent },
 
 ];
 
