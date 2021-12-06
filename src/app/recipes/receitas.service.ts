@@ -1,5 +1,5 @@
 /* eslint-disable no-plusplus */
-import { EventEmitter, Injectable } from "@angular/core";
+import { Injectable } from "@angular/core";
 import { Ingredient } from "../shared/Ingredient.model";
 import { ShoppingListService } from "../shoping-list/shopping-list.service";
 import { Recipe } from "./recipe.model";
@@ -12,14 +12,14 @@ export class ReceitasService {
       new Ingredient("Fermento", 0.5),
 
     ]),
-    new Recipe("Bolo", "Gelado Chocolate", "https://lh3.googleusercontent.com/proxy/tZ8wR3vFthjb6zuPhKXRDQrDtpAfUPrmDyFPj2jljxuzadzirV_x_N-N0qf8rHTuflT1ebVBvi9BEnF434tJh4dvdPSvwQ1w29PRpq7H5MExDuCVjbL-Pcst8tNZY_QNI48Dqu_vTxgAoXzDlvrlnBoNos5iz8LigA", [
-      new Ingredient("Fermento", 0.5),
-      new Ingredient("Ovos", 0.5),
-      new Ingredient("Margarian", 0.5),
-    ]),
+    new Recipe("Bolo", "Gelado Chocolate",
+      "https://bolodefestasp.com.br/wp-content/uploads/2020/12/WhatsApp_Image_2020-12-20_at_19.54.55-removebg-preview.png",
+      [
+        new Ingredient("Fermento", 0.5),
+        new Ingredient("Ovos", 0.5),
+        new Ingredient("Margarian", 0.5),
+      ]),
   ];
-
-  receitaSelecionada = new EventEmitter<Recipe>();
 
   constructor(private ListaService : ShoppingListService) { }
 

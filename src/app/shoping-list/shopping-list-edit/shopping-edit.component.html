@@ -1,21 +1,24 @@
 <div class="row">
     <div class="col-xs-12">
-        <form>
-            <div class="row">
+        <form #myForm="ngForm" (ngSubmit)="saveIngredient(myForm)">
+            <div class="row" >
                 <div class="col-sm-5 form-group">
                     <label for="name">Nome</label>
-                    <input type="text" id="name" class="form-control" #nomeInput>
+                    <input type="text" id="name" class="form-control" ngModel name="name" required #nome= "ngModel">
+                    <span class="form-control msg-error" *ngIf="nome.status === 'INVALID'">O nome é obrigatório</span>
                 </div>
                 <div class="col-sm-2 form-group">
                     <label for="quantidade">Quantidade</label>
-                    <input type="number" class="form-control" #quantidadeInput>
+                    <input type="number" class="form-control" ngModel name="number" required #numero="ngModel"
+                      >
+                    <span class="form-control msg-error" *ngIf="numero.status === 'INVALID'">Quantidade obrigatória</span>
                 </div>
             </div>
             <div class="row">
                 <div class="col-xs-12">
-                    <button class="btn btn-success botoes"  (click)="saveIngredient()">Salvar</button>
-                    <button class="btn btn-danger botoes" >Remover</button>
-                    <button class="btn btn-primary botoes" >Limpar</button>
+                    <button class="btn btn-success botoes"  type="submit" [disabled]="!myForm.valid">Salvar</button>
+                    <button class="btn btn-danger botoes" type="button">Remover</button>
+                    <button class="btn btn-primary botoes" type="button" (click)="myForm.reset()">Limpar</button>
                 </div>
             </div>
         </form>
