@@ -16,9 +16,9 @@
             </div>
             <div class="row">
                 <div class="col-xs-12">
-                    <button class="btn btn-success botoes"  type="submit" [disabled]="!myForm.valid">Salvar</button>
-                    <button class="btn btn-danger botoes" type="button">Remover</button>
-                    <button class="btn btn-primary botoes" type="button" (click)="myForm.reset()">Limpar</button>
+                    <button class="btn btn-success botoes"  type="submit" [disabled]="!myForm.valid">{{ editMode? "Atualizar" : "Salvar"}}</button>
+                    <button class="btn btn-danger botoes" [disabled]="!editMode" type="button" (click)="removeItem()">Remover</button>
+                    <button class="btn btn-primary botoes" type="button" (click)="onClear()">Limpar</button>
                 </div>
             </div>
         </form>

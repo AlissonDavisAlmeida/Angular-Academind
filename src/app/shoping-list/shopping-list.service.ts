@@ -14,6 +14,19 @@ export class ShoppingListService {
     return this.ingredientes;
   }
 
+  getIngredient(index : number) {
+    return this.ingredientes[index];
+  }
+
+  updateIngredient(index : number, ingredient : Ingredient) {
+    console.log(ingredient);
+    this.ingredientes.splice(index, 1, ingredient);
+  }
+
+  deleteItem(index : number) {
+    this.ingredientes.splice(index, 1);
+  }
+
   adicionarIngrediente(ingrediente : Ingredient) {
     this.ingredientes.push(ingrediente);
   }
