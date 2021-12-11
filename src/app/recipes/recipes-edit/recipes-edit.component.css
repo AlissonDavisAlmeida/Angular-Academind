@@ -1,0 +1,19 @@
+.painel{
+    margin-top: 2%;
+}
+.row-name{
+   margin-top: 1%;
+   margin-bottom: 1%;
+}
+.row-description{
+    margin-bottom: 2%;
+}
+.row-footer{
+    display: flex;
+    flex-direction: row;
+   
+}
+input.ng-invalid.ng-touched,
+textarea.ng-invalid.ng-touched{
+    border: 1px solid rgb(235, 86, 86);
+}

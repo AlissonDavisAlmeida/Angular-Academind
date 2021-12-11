@@ -27,6 +27,10 @@ export class ReceitasService {
     return this.receitas.slice();
   }
 
+  addReceitas(recipe : Recipe) {
+    this.receitas.push(recipe);
+  }
+
   addIngredientesListaCompras(ingredientes : Ingredient[]) {
     for (let index = 0; index < ingredientes.length; index++) {
       this.ListaService.adicionarIngrediente(ingredientes[index]);
