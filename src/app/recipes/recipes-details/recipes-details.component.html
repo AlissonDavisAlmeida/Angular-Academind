@@ -15,9 +15,9 @@
         </div>
         
         
-        <div class="row">
+       <!--  <div class="row">
             <div class="col-xs-12">{{ receita.nome }}</div>
-        </div>
+        </div> -->
         <div class="row">
             <div class="col-xs-12">{{ receita.descricao }}</div>
         </div>
@@ -34,7 +34,7 @@
                     <ul class="dropdown-menu dropdown-menu-dark menu">
                         <li><a  class="dropdown-item" (click)="irParaEdicao()">Editar Receita</a></li>
                         <li><a  class="dropdown-item" (click)=" IrParaListadeCompras()">Enviar para a lista de Compras</a></li>
-                        <li><a  class="dropdown-item">Adicionar Ingredientes</a></li>
+                        <li><a  class="dropdown-item" (click)="apagarReceita()">Apagar Receita</a></li>
                     </ul>
                 </div>
             </div>

@@ -33,4 +33,9 @@ export class RecipesDetailsComponent implements OnInit {
   irParaEdicao() {
     this.router.navigate(["../../", "editar", this.indice], { relativeTo: this.activeRoute });
   }
+
+  apagarReceita() {
+    this.recipesService.deleteRecipe(this.indice);
+    this.router.navigate([""]);
+  }
 }
