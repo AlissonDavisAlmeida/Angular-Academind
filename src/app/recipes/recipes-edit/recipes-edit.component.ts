@@ -84,8 +84,13 @@ export class RecipesEditComponent implements OnInit {
     (<FormArray> this.myForm.get("ingredients")).push(
       new FormGroup({
         nome: new FormControl("", Validators.required),
-        quantidade: new FormControl("", [Validators.required, Validators.pattern(/^[1-9]+[0-9]*$/)]),
+        quantidade: new FormControl("", [Validators.required, Validators.pattern(/^[1.0-9.0]+[0-9]*$/)]),
       }),
     );
+  }
+
+  removeIngredient(index : number) {
+    (<FormArray> this.myForm.get("ingredients")).removeAt(index);
+    // this.recipeService.getReceitas()[this.id].ingredientes.splice(index, 1);
   }
 }

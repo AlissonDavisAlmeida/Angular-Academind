@@ -28,6 +28,7 @@ export class RecipesDetailsComponent implements OnInit {
 
   IrParaListadeCompras() {
     this.recipesService.addIngredientesListaCompras(this.receita.ingredientes);
+    this.router.navigate(["shopping"]);
   }
 
   irParaEdicao() {

@@ -5,7 +5,7 @@ import { ReceitasService } from "./receitas.service";
   selector: "app-recipes",
   templateUrl: "./recipes.component.html",
   styleUrls: ["./recipes.component.css"],
-  providers: [ReceitasService],
+  providers: [],
 })
 export class RecipesComponent implements OnInit {
   constructor(private receitaService : ReceitasService) { }
