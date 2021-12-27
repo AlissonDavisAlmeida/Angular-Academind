@@ -15,12 +15,12 @@
 
                 </li>
             </ul>
-            <ul class="nav navbar-nav me-auto">
+            <ul class="nav menu-salvar navbar-nav">
                 <li class="dropdown">
-                    <a   class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Teste</a>
+                    <a   class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Salvar/Carregar</a>
                     <ul class="dropdown-menu dropdown-menu-dark menu-navbar" aria-labelledby="navbarDropdown">
-                        <li><a  class="dropdown-item">Salvar</a></li>
-                        <li><a  class="dropdown-item">Fetch Data</a></li>
+                        <li><a  class="dropdown-item" (click)="salvarReceitas()">Salvar</a></li>
+                        <li><a  class="dropdown-item" (click)="carregarReceitas()">Carregar</a></li>
                     </ul>
                 </li>
             </ul>

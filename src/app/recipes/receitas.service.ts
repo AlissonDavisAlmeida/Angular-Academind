@@ -10,7 +10,7 @@ export class ReceitasService {
   recipeChanged = new Subject<Recipe[]>();
 
   private receitas: Recipe[] = [
-    new Recipe("Pão", "Francês", "https://imagensemoldes.com.br/wp-content/uploads/2020/06/Foto-P%C3%A3o-PNG-1280x720.png", [
+    /* new Recipe("Pão", "Francês", "https://imagensemoldes.com.br/wp-content/uploads/2020/06/Foto-P%C3%A3o-PNG-1280x720.png", [
       new Ingredient("Farinha", 1),
       new Ingredient("Fermento", 0.5),
 
@@ -21,7 +21,7 @@ export class ReceitasService {
         new Ingredient("Fermento", 0.5),
         new Ingredient("Ovos", 0.5),
         new Ingredient("Margarian", 0.5),
-      ]),
+      ]), */
   ];
 
   constructor(private ListaService : ShoppingListService) { }
