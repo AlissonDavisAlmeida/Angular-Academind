@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { map } from "rxjs/operators";
+import { map, tap } from "rxjs/operators";
 import { ReceitasService } from "../recipes/receitas.service";
 import { Recipe } from "../recipes/recipe.model";
 
@@ -29,18 +29,17 @@ export class DataStorageService {
   }
 
   carregarReceitas() {
-    this.http.get<Recipe[]>("https://projeto-pet-10dcb-default-rtdb.firebaseio.com/receitas.json")
+    return this.http.get<Recipe[]>("https://projeto-pet-10dcb-default-rtdb.firebaseio.com/receitas.json")
       .pipe(map((receitas) => receitas.map((receita) => ({
         ...receita,
         ingredientes: receita.ingredientes ? receita.ingredientes : [],
-      }))))
-      .subscribe((dados) => {
-        console.log(dados);
+      }))),
+      tap((dados) => {
         const newDados = Object.values(dados);
 
         newDados.forEach((receita) => {
           this.servicoReceita.addReceitas(receita);
         });
-      });
+      }));
   }
 }

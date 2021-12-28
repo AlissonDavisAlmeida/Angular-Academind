@@ -19,6 +19,7 @@ export class HeaderComponent {
   }
 
   carregarReceitas() {
-    this.dataStore.carregarReceitas();
+    this.dataStore.carregarReceitas()
+      .subscribe((dados) => console.log(dados));
   }
 }

@@ -52,7 +52,8 @@
         "@typescript-eslint/quotes": ["warn","double",{"avoidEscape":true,"allowTemplateLiterals":true}],
         "@angular-eslint/no-empty-lifecycle-method":"off",
         "class-methods-use-this":"off",
-        "max-len":"off"
+        "max-len":"off",
+        "@typescript-eslint/no-unused-vars":"off"
       }
     },
     {
