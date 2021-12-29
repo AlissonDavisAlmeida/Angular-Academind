@@ -3,4 +3,10 @@
 }
 .menu-salvar{
     margin-left: auto;
+    
+}
+.menu-auth{
+    display: flex;
+    justify-content: end;
+    width: 100vh;
 }

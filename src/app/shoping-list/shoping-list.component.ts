@@ -1,4 +1,6 @@
-import { Component, OnInit } from "@angular/core";
+import {
+  Component, OnChanges, OnDestroy, OnInit, SimpleChanges,
+} from "@angular/core";
 import { Router } from "@angular/router";
 
 import { Ingredient } from "../shared/Ingredient.model";
@@ -14,12 +16,15 @@ export class ShopingListComponent implements OnInit {
 
   ];
 
+  isShowing = true;
+
   constructor(private shoppingService : ShoppingListService, private router : Router) {
 
   }
 
   ngOnInit(): void {
     this.ingredientes = this.shoppingService.getIngredientes();
+    this.isShowing = true;
   }
 
   onEditItem(index : number): void {

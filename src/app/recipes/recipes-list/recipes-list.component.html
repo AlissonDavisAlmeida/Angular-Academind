@@ -3,7 +3,7 @@
         <button class="btn btn-success" (click)="novaReceita()">Nova Receita</button>
     </div>
     <hr>
-    <div class="row">
+    <div class="row animate__animated animate__bounceInDown">
         <div class="col-xs-12">
             <a  class="list-group-item clearfix itens"  *ngFor="let receita of receitas; let i = index" >
             <app-recipe-item  [receita]="receita" [indice]="i"></app-recipe-item>
