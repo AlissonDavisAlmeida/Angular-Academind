@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { AppRoutingModule } from "./app-routing.module";
 
@@ -17,7 +17,8 @@ import { ShoppingListService } from "./shoping-list/shopping-list.service";
 import { RecipesStartComponent } from "./recipes/recipes-start/recipes-start.component";
 import { RecipesEditComponent } from "./recipes/recipes-edit/recipes-edit.component";
 import { ReceitasService } from "./recipes/receitas.service";
-import { AuthComponent } from './auth/auth.component';
+import { AuthComponent } from "./auth/auth.component";
+import { AuthInterceptor } from "./auth/auth.interceptor";
 
 @NgModule({
   declarations: [
