@@ -18,7 +18,7 @@ import { RecipesStartComponent } from "./recipes/recipes-start/recipes-start.com
 import { RecipesEditComponent } from "./recipes/recipes-edit/recipes-edit.component";
 import { ReceitasService } from "./recipes/receitas.service";
 import { AuthComponent } from "./auth/auth.component";
-import { AuthInterceptor } from "./auth/auth.interceptor";
+import { LoadingSpinnersComponent } from './shared/loading-spinners/loading-spinners.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +34,7 @@ import { AuthInterceptor } from "./auth/auth.interceptor";
     RecipesStartComponent,
     RecipesEditComponent,
     AuthComponent,
+    LoadingSpinnersComponent,
 
   ],
   imports: [

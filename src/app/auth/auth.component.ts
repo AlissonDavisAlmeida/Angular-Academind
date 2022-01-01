@@ -10,6 +10,10 @@ import { AuthService } from "./auth.service";
 export class AuthComponent implements OnInit {
   isLoginMode = true;
 
+  error:string = null;
+
+  isLoading = false;
+
   constructor(private authService : AuthService) { }
 
   onSwitchMode() {
@@ -20,6 +24,7 @@ export class AuthComponent implements OnInit {
   }
 
   onSubmit(myForm : NgForm) {
+    this.isLoading = true;
     console.log(myForm.value);
     if (!myForm.valid) {
       return;
@@ -27,10 +32,13 @@ export class AuthComponent implements OnInit {
     if (!this.isLoginMode) {
       this.authService.signup(myForm.value.email, myForm.value.senha).subscribe((retorno) => {
         console.log(retorno);
+        this.isLoading = false;
       }, ((error) => {
-        console.log(error.error.error.message);
+        this.error = error;
+        this.isLoading = false;
       }));
     }
+
     myForm.reset();
   }
 }
