@@ -1,6 +1,9 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { map, tap } from "rxjs/operators";
+import {
+  exhaustMap, map, take, tap,
+} from "rxjs/operators";
+import { AuthService } from "../auth/auth.service";
 import { ReceitasService } from "../recipes/receitas.service";
 import { Recipe } from "../recipes/recipe.model";
 
@@ -10,7 +13,8 @@ import { Recipe } from "../recipes/recipe.model";
 export class DataStorageService {
   receitas : Recipe[] = [];
 
-  constructor(private http : HttpClient, private servicoReceita : ReceitasService) {
+  constructor(private http : HttpClient, private servicoReceita : ReceitasService,
+    private authService : AuthService) {
   /*   this.http.get("https://projeto-pet-10dcb-default-rtdb.firebaseio.com/receitas.json").subscribe((dados) => {
       console.log(dados);
       const newDados = Object.values(dados);
@@ -29,17 +33,21 @@ export class DataStorageService {
   }
 
   carregarReceitas() {
-    return this.http.get<Recipe[]>("https://projeto-pet-10dcb-default-rtdb.firebaseio.com/receitas.json")
-      .pipe(map((receitas) => receitas.map((receita) => ({
-        ...receita,
-        ingredientes: receita.ingredientes ? receita.ingredientes : [],
-      }))),
-      tap((dados) => {
-        const newDados = Object.values(dados);
+    return this.authService.usuarioEmmit.pipe(take(1), exhaustMap((user) => this.http.get<Recipe[]>("https://projeto-pet-10dcb-default-rtdb.firebaseio.com/receitas.json",
+      {
+        params: new HttpParams().set("auth", user.token),
+      })),
 
-        newDados.forEach((receita) => {
-          this.servicoReceita.addReceitas(receita);
-        });
-      }));
+    map((receitas) => receitas.map((receita) => ({
+      ...receita,
+      ingredientes: receita.ingredientes ? receita.ingredientes : [],
+    }))),
+    tap((dados) => {
+      const newDados = Object.values(dados);
+
+      newDados.forEach((receita) => {
+        this.servicoReceita.addReceitas(receita);
+      });
+    }));
   }
 }

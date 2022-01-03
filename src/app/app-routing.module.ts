@@ -11,7 +11,7 @@ import { ShopingListComponent } from "./shoping-list/shoping-list.component";
 
 const routes: Routes = [
 
-  { path: "", redirectTo: "/receitas", pathMatch: "full" },
+  { path: "", redirectTo: "/auth", pathMatch: "full" },
   {
     path: "receitas",
     component: RecipesComponent,

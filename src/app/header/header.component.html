@@ -8,21 +8,25 @@
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li class="nav-item">
-                    <a   class="nav-link "  routerLinkActive="active"  routerLink="receitas">Receitas</a>
+                    <a   class="nav-link "  routerLinkActive="active"  routerLink="receitas" *ngIf="getAutenticado() === true">Receitas</a>
                 </li>
                 <li class="nav-item">
-                    <a  class="nav-link" routerLinkActive="active" routerLink="shopping">Lista de Compras</a>
+                    <a  class="nav-link" routerLinkActive="active" routerLink="shopping"  *ngIf="getAutenticado() === true">Lista de Compras</a>
 
                 </li>
                
                     
                     <li class="nav-item menu-auth">
-                        <a  class="nav-link" routerLinkActive="active" routerLink="auth">Autenticação</a>
+                        <a  class="nav-link" routerLinkActive="active" routerLink="auth"  *ngIf="getAutenticado() === false">Autenticação</a>
+                        
+                    </li>
+                    <li class="nav-item menu-logout">
+                        <a  class="nav-link" routerLinkActive="active"  *ngIf="getAutenticado() === true">Logout</a>
                         
                     </li>
                     
                 </ul>
-                <ul class="nav menu-salvar navbar-nav">
+                <ul class="nav menu-salvar navbar-nav"  *ngIf="getAutenticado()">
                     <li class="dropdown">
                         <a   class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Salvar/Carregar</a>
                         <ul class="dropdown-menu dropdown-menu-dark menu-navbar" aria-labelledby="navbarDropdown">

@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { NgForm } from "@angular/forms";
-import { AuthService } from "./auth.service";
+import { Router } from "@angular/router";
+import { Observable } from "rxjs";
+import { AuthService, AuthServiceResponseData } from "./auth.service";
 
 @Component({
   selector: "app-auth",
@@ -14,7 +16,7 @@ export class AuthComponent implements OnInit {
 
   isLoading = false;
 
-  constructor(private authService : AuthService) { }
+  constructor(private authService : AuthService, private rota : Router) { }
 
   onSwitchMode() {
     this.isLoginMode = !this.isLoginMode;
@@ -25,19 +27,28 @@ export class AuthComponent implements OnInit {
 
   onSubmit(myForm : NgForm) {
     this.isLoading = true;
-    console.log(myForm.value);
+
     if (!myForm.valid) {
       return;
     }
+
+    let authObs : Observable<AuthServiceResponseData>;
+
     if (!this.isLoginMode) {
-      this.authService.signup(myForm.value.email, myForm.value.senha).subscribe((retorno) => {
-        console.log(retorno);
-        this.isLoading = false;
-      }, ((error) => {
-        this.error = error;
-        this.isLoading = false;
-      }));
+      authObs = this.authService.signup(myForm.value.email, myForm.value.senha);
+    } else {
+      authObs = this.authService.login(myForm.value.email, myForm.value.senha);
     }
+
+    authObs.subscribe((retorno) => {
+      console.log(retorno);
+      this.isLoading = false;
+      this.error = null;
+      this.rota.navigate(["/receitas"]);
+    }, ((error) => {
+      this.error = error;
+      this.isLoading = false;
+    }));
 
     myForm.reset();
   }

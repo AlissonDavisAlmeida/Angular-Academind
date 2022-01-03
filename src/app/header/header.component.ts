@@ -1,5 +1,7 @@
 import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
+import { Component, OnDestroy, OnInit } from "@angular/core";
+import { Subscription } from "rxjs";
+import { AuthService } from "../auth/auth.service";
 import { ReceitasService } from "../recipes/receitas.service";
 import { DataStorageService } from "../shared/data-storage.service";
 
@@ -9,9 +11,30 @@ import { DataStorageService } from "../shared/data-storage.service";
   templateUrl: "header.component.html",
 })
 
-export class HeaderComponent {
-  constructor(private dataStore : DataStorageService, private http : HttpClient, private servicoReceita : ReceitasService) {
+export class HeaderComponent implements OnInit, OnDestroy {
+  private autenticado = false;
 
+  private authSubscription : Subscription;
+
+  constructor(private dataStore : DataStorageService, private http : HttpClient, private servicoReceita : ReceitasService,
+    private authService : AuthService) {
+
+  }
+
+  public getAutenticado() {
+    return this.autenticado;
+  }
+
+  ngOnDestroy(): void {
+    this.authSubscription.unsubscribe();
+  }
+
+  ngOnInit(): void {
+    this.authSubscription = this.authService.usuarioEmmit.subscribe((usuario) => {
+      console.log(usuario);
+      this.autenticado = !!usuario;
+      console.log(this.autenticado);
+    });
   }
 
   salvarReceitas() {
