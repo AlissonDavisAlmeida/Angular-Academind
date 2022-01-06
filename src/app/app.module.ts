@@ -18,7 +18,8 @@ import { RecipesStartComponent } from "./recipes/recipes-start/recipes-start.com
 import { RecipesEditComponent } from "./recipes/recipes-edit/recipes-edit.component";
 import { ReceitasService } from "./recipes/receitas.service";
 import { AuthComponent } from "./auth/auth.component";
-import { LoadingSpinnersComponent } from './shared/loading-spinners/loading-spinners.component';
+import { LoadingSpinnersComponent } from "./shared/loading-spinners/loading-spinners.component";
+import { AuthInterceptor } from "./auth/auth.interceptor";
 
 @NgModule({
   declarations: [
@@ -44,7 +45,7 @@ import { LoadingSpinnersComponent } from './shared/loading-spinners/loading-spin
     ReactiveFormsModule,
     HttpClientModule,
   ],
-  providers: [ShoppingListService, ReceitasService],
+  providers: [ShoppingListService, ReceitasService, { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

@@ -11,6 +11,10 @@
     align-items: center;
     width: 100vh;
 }
+.menu-logout{
+    cursor: pointer;
+    user-select: none;
+}
 
 @media (max-width: 900px) {
     .collapse{

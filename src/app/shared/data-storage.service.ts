@@ -28,26 +28,24 @@ export class DataStorageService {
   salvarReceitas() {
     this.receitas = this.servicoReceita.getReceitas();
     this.http.put("https://projeto-pet-10dcb-default-rtdb.firebaseio.com/receitas.json", this.receitas).subscribe((retorno) => {
-      console.log(retorno);
+
     });
   }
 
   carregarReceitas() {
-    return this.authService.usuarioEmmit.pipe(take(1), exhaustMap((user) => this.http.get<Recipe[]>("https://projeto-pet-10dcb-default-rtdb.firebaseio.com/receitas.json",
-      {
-        params: new HttpParams().set("auth", user.token),
-      })),
+    return this.http.get<Recipe[]>("https://projeto-pet-10dcb-default-rtdb.firebaseio.com/receitas.json").pipe(
+      map((receitas) => receitas.map((receita) => ({
+        ...receita,
+        ingredientes: receita.ingredientes ? receita.ingredientes : [],
+      }))),
 
-    map((receitas) => receitas.map((receita) => ({
-      ...receita,
-      ingredientes: receita.ingredientes ? receita.ingredientes : [],
-    }))),
-    tap((dados) => {
-      const newDados = Object.values(dados);
+      tap((dados) => {
+        const newDados = Object.values(dados);
 
-      newDados.forEach((receita) => {
-        this.servicoReceita.addReceitas(receita);
-      });
-    }));
+        newDados.forEach((receita) => {
+          this.servicoReceita.addReceitas(receita);
+        });
+      }),
+    );
   }
 }

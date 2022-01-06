@@ -21,7 +21,7 @@
                         
                     </li>
                     <li class="nav-item menu-logout">
-                        <a  class="nav-link" routerLinkActive="active"  *ngIf="getAutenticado() === true">Logout</a>
+                        <a  class="nav-link" routerLinkActive="active" (click)="logout()"  *ngIf="getAutenticado() === true">Logout</a>
                         
                     </li>
                     

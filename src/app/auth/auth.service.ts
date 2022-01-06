@@ -1,7 +1,8 @@
 import { HttpClient } from "@angular/common/http";
-import { Injectable } from "@angular/core";
+import { Injectable, OnInit } from "@angular/core";
 import { catchError, tap } from "rxjs/operators";
 import { BehaviorSubject, throwError } from "rxjs";
+import { Router } from "@angular/router";
 import { UserModel } from "./user.model";
 
 export interface AuthServiceResponseData{
@@ -21,7 +22,11 @@ export class AuthService {
 
   usuarioEmmit = new BehaviorSubject<UserModel>(null);
 
-  constructor(private http : HttpClient) { }
+  private timer : any;
+
+  constructor(private http : HttpClient, private rota : Router) {
+
+  }
 
   signup(email : string, senha : string) {
     return this.http.post<AuthServiceResponseData>(`https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=${this.APIKEY}`, { email, password: senha, returnSecureToken: true })
@@ -58,9 +63,43 @@ export class AuthService {
       }));
   }
 
+  autoLogin() {
+    const userData = localStorage.getItem("usuario");
+    if (!userData) {
+      return;
+    }
+    const user :{ email:string, id:string, _token:string, _tokenExpirationDate } = JSON.parse(userData);
+    const newUser = new UserModel(user.email, user.id, user._token, new Date(user._tokenExpirationDate));
+    if (newUser.token) {
+      console.log("entrou aqui");
+
+      this.usuarioEmmit.next(newUser);
+      const expirationDuration = new Date(user._tokenExpirationDate).getTime() - new Date().getTime();
+      this.autoLogout(expirationDuration);
+    }
+  }
+
+  logout() {
+    this.usuarioEmmit.next(null);
+    this.rota.navigate(["/"]);
+    localStorage.removeItem("usuario");
+    if (this.timer) {
+      clearTimeout(this.timer);
+    }
+    this.timer = null;
+  }
+
+  autoLogout(expirationDuration : number) {
+    this.timer = setTimeout(() => {
+      this.logout();
+    }, expirationDuration);
+  }
+
   private handleAuth(email : string, userId:string, token : string, expiresIn : number) {
     const expireDate = new Date(new Date().getTime() + expiresIn * 1000);
     const user = new UserModel(email, userId, token, expireDate);
+    localStorage.setItem("usuario", JSON.stringify(user));
     this.usuarioEmmit.next(user);
+    this.autoLogout(expiresIn * 1000);
   }
 }
