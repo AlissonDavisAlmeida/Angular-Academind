@@ -1,6 +1,7 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { AuthComponent } from "./auth/auth.component";
+import { AuthGuard } from "./auth/auth.guard";
 import { RecipesDetailsComponent } from "./recipes/recipes-details/recipes-details.component";
 import { RecipesEditComponent } from "./recipes/recipes-edit/recipes-edit.component";
 import { RecipesStartComponent } from "./recipes/recipes-start/recipes-start.component";
@@ -22,8 +23,9 @@ const routes: Routes = [
 
       { path: "editar/:id", component: RecipesEditComponent, resolve: [RecipesResolver] },
     ],
+    canActivate: [AuthGuard],
   },
-  { path: "shopping", component: ShopingListComponent },
+  { path: "shopping", component: ShopingListComponent, canActivate: [AuthGuard] },
   { path: "auth", component: AuthComponent },
 
 ];

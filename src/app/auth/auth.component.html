@@ -4,9 +4,10 @@
             <app-loading-spinners ></app-loading-spinners>
 
         </div>
-        <div class="alert alert-danger" *ngIf="error !== null">
+        <!-- <div class="alert alert-danger" *ngIf="error !== null">
             {{ error }}
-        </div>
+        </div> -->
+        <app-allert [mensagem]="error" *ngIf="error !== null" (fecharModal)="error = null"></app-allert>
         <form class="w-50 animate__bounceIn animate__animated" (ngSubmit)="onSubmit(myForm)" #myForm="ngForm" *ngIf="!isLoading">
             <div class="form-group">
                 <label for="email" class="form-label">Email</label>
