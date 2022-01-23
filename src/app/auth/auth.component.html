@@ -6,8 +6,10 @@
         </div>
         <!-- <div class="alert alert-danger" *ngIf="error !== null">
             {{ error }}
-        </div> -->
-        <app-allert [mensagem]="error" *ngIf="error !== null" (fecharModal)="error = null"></app-allert>
+        </div>
+        <app-allert [mensagem]="error" *ngIf="error !== null" (fecharModal)="error = null"></app-allert> -->
+        <ng-template  appPlaceholder ></ng-template>
+
         <form class="w-50 animate__bounceIn animate__animated" (ngSubmit)="onSubmit(myForm)" #myForm="ngForm" *ngIf="!isLoading">
             <div class="form-group">
                 <label for="email" class="form-label">Email</label>
@@ -26,7 +28,7 @@
                 </div>
                 <div>
                     <button class="btn btn-primary mt-3" (click)= "onSwitchMode()" type="button">Switch to Login</button>
-                    
+                    <button class="btn btn-danger  mt-3 ms-2" type="button" (click)="showErrorAlert('Erro normal')">mostrar erro</button>
                 </div>
             </div>
         </form>

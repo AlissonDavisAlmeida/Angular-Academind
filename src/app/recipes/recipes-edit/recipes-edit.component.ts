@@ -39,7 +39,7 @@ export class RecipesEditComponent implements OnInit {
     } else {
       this.recipeService.addReceitas(newRecipe);
     }
-    this.rota.navigate([""]);
+    this.rota.navigate(["/receitas"]);
   }
 
   cancelar() {

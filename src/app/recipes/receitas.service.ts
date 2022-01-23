@@ -31,9 +31,12 @@ export class ReceitasService {
   }
 
   addReceitas(recipe : Recipe) {
-    this.receitas.push(recipe);
-    this.recipeChanged.next(this.receitas.slice());
-    console.log("Receita adicionada com sucesso");
+    const existe = this.receitas.find((receitaN) => receitaN.nome === recipe.nome);
+    if (!existe) {
+      this.receitas.push(recipe);
+      this.recipeChanged.next(this.receitas.slice());
+      console.log("Receita adicionada com sucesso");
+    }
   }
 
   atualizarReceita(index : number, newRecipe : Recipe) {
