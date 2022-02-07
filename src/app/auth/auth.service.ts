@@ -3,6 +3,7 @@ import { Injectable, OnInit } from "@angular/core";
 import { catchError, tap } from "rxjs/operators";
 import { BehaviorSubject, throwError } from "rxjs";
 import { Router } from "@angular/router";
+import { environment } from "src/environments/environment";
 import { UserModel } from "./user.model";
 
 export interface AuthServiceResponseData{
@@ -18,7 +19,7 @@ export interface AuthServiceResponseData{
   providedIn: "root",
 })
 export class AuthService {
-  private APIKEY = "AIzaSyBu4j87xyyWPtZztRZ6--2LVhCW9h7sfKw";
+  private APIKEY = environment.firebaseAPIKey;
 
   usuarioEmmit = new BehaviorSubject<UserModel>(null);
 
@@ -71,8 +72,6 @@ export class AuthService {
     const user :{ email:string, id:string, _token:string, _tokenExpirationDate } = JSON.parse(userData);
     const newUser = new UserModel(user.email, user.id, user._token, new Date(user._tokenExpirationDate));
     if (newUser.token) {
-      console.log("entrou aqui");
-
       this.usuarioEmmit.next(newUser);
       const expirationDuration = new Date(user._tokenExpirationDate).getTime() - new Date().getTime();
       this.autoLogout(expirationDuration);

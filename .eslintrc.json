@@ -37,23 +37,37 @@
             "style": "kebab-case"
           }
         ],
-        "semi":"warn",
-        "import/prefer-default-export":"off",
+        "semi": "warn",
+        "import/prefer-default-export": "off",
         "linebreak-style": "off",
         "no-unused-vars": "off",
         "no-console": "off",
-        "quotes": ["warn","double",{"avoidEscape":true,"allowTemplateLiterals":true}],
+        "quotes": [
+          "warn",
+          "double",
+          {
+            "avoidEscape": true,
+            "allowTemplateLiterals": true
+          }
+        ],
         "no-underscore-dangle": "off",
         "no-proto": "off",
         "no-restricted-syntax": "off",
         "max-classes-per-file": "off",
-        "@typescript-eslint/no-useless-constructor":"off",
-        "@typescript-eslint/no-empty-function":"off",
-        "@typescript-eslint/quotes": ["warn","double",{"avoidEscape":true,"allowTemplateLiterals":true}],
-        "@angular-eslint/no-empty-lifecycle-method":"off",
-        "class-methods-use-this":"off",
-        "max-len":"off",
-        "@typescript-eslint/no-unused-vars":"off"
+        "@typescript-eslint/no-useless-constructor": "off",
+        "@typescript-eslint/no-empty-function": "off",
+        "@typescript-eslint/quotes": [
+          "warn",
+          "double",
+          {
+            "avoidEscape": true,
+            "allowTemplateLiterals": true
+          }
+        ],
+        "@angular-eslint/no-empty-lifecycle-method": "off",
+        "class-methods-use-this": "off",
+        "max-len": "off",
+        "@typescript-eslint/no-unused-vars": "off"
       }
     },
     {
@@ -64,6 +78,14 @@
         "plugin:@angular-eslint/template/recommended"
       ],
       "rules": {}
+    },
+    {
+      "files": [
+        "*.ts"
+      ],
+      "extends": [
+        "plugin:ngrx/recommended"
+      ]
     }
   ]
 }
